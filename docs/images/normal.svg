@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="708" height="100" viewBox="0 0 708 100">
+<rect width="708" height="100" rx="8" fill="#0C0C0C"/>
+<path d="M0 8a8 8 0 0 1 8-8h692a8 8 0 0 1 8 8v26H0z" fill="#1F1F1F"/>
+<rect x="10" y="6" width="150" height="28" rx="6" fill="#0C0C0C"/>
+<text x="24" y="25" font-family="Segoe UI, sans-serif" font-size="12" fill="#CCCCCC">Claude Code</text>
+<g stroke="#CCCCCC" stroke-width="1" fill="none"><line x1="590" y1="17" x2="600" y2="17"/><rect x="636" y="12" width="10" height="10"/><line x1="680" y1="12" x2="690" y2="22"/><line x1="690" y1="12" x2="680" y2="22"/></g>
+<g font-family="Cascadia Mono, Consolas, monospace" font-size="14" xml:space="preserve">
+<text x="18.0 26.4 34.8" y="58" fill="#CCCCCC">CTX</text>
+<rect x="52.1" y="45" width="7.4" height="16" fill="#13A10E" fill-opacity="1.0"/>
+<rect x="60.5" y="45" width="7.4" height="16" fill="#13A10E" fill-opacity="1.0"/>
+<rect x="68.9" y="45" width="7.4" height="16" fill="#13A10E" fill-opacity="1.0"/>
+<rect x="77.3" y="45" width="7.4" height="16" fill="#13A10E" fill-opacity="1.0"/>
+<rect x="85.7" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="94.1" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="102.5" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="110.9" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="119.3" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="127.7" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<text x="144.0 152.4 160.8 169.2 177.6 186.0 194.4 202.8 211.2" y="58" fill="#CCCCCC">420k/1.0M</text>
+<text x="228.0 236.4 244.8" y="58" fill="#13A10E">42%</text>
+<text x="270.0" y="58" fill="#767676">│</text>
+<text x="295.2 303.6" y="58" fill="#CCCCCC">5h</text>
+<rect x="320.9" y="45" width="7.4" height="16" fill="#13A10E" fill-opacity="1.0"/>
+<rect x="329.3" y="45" width="7.4" height="16" fill="#13A10E" fill-opacity="1.0"/>
+<rect x="337.7" y="45" width="7.4" height="16" fill="#13A10E" fill-opacity="1.0"/>
+<rect x="346.1" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="354.5" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="362.9" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="371.3" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="379.7" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<text x="396.0 404.4 412.8" y="58" fill="#13A10E">34%</text>
+<text x="429.6 438.0 446.4 454.8 463.2" y="58" fill="#767676">4h23m</text>
+<text x="488.4" y="58" fill="#767676">│</text>
+<text x="513.6 522.0" y="58" fill="#CCCCCC">7d</text>
+<rect x="539.3" y="45" width="7.4" height="16" fill="#13A10E" fill-opacity="1.0"/>
+<rect x="547.7" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="556.1" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="564.5" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="572.9" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="581.3" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="589.7" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<rect x="598.1" y="45" width="7.4" height="16" fill="#767676" fill-opacity="0.35"/>
+<text x="614.4 622.8 631.2" y="58" fill="#13A10E">12%</text>
+<text x="648.0 656.4 664.8 673.2 681.6" y="58" fill="#767676">5d12h</text>
+<text x="18.0" y="80" fill="#CCCCCC">🤖</text>
+<text x="43.2 51.6 60.0 68.4" y="80" fill="#B4009E" font-weight="bold">Opus</text>
+<text x="85.2 93.6 102.0" y="80" fill="#B4009E" font-weight="bold">5.5</text>
+<text x="127.2 135.6 144.0 152.4" y="80" fill="#61D6D6">high</text>
+<text x="177.6 186.0 194.4 202.8" y="80" fill="#61D6D6">main</text>
+<text x="228.0 236.4 244.8 253.2 261.6 270.0 278.4 286.8" y="80" fill="#767676">+128/-37</text>
+<text x="312.0 320.4 328.8 337.2 345.6 354.0 362.4 370.8 379.2 387.6" y="80" fill="#F2F2F2">my-project</text>
+<text x="412.8 421.2 429.6 438.0 446.4 454.8 463.2 471.6 480.0 488.4 496.8" y="80" fill="#13A10E">cache→01:18</text>
+<text x="522.0 530.4 538.8" y="80" fill="#767676">46m</text>
+</g></svg>
