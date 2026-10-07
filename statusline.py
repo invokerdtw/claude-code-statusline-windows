@@ -48,7 +48,12 @@ GIT_IN_CLOUD = _env_flag('CLAUDE_STATUSLINE_GIT_IN_CLOUD')  # force git even on 
 NO_GIT_PATHS = [p.strip() for p in os.environ.get('CLAUDE_STATUSLINE_NO_GIT', '').split(';') if p.strip()]
 
 CLAUDE_DIR = os.environ.get('CLAUDE_CONFIG_DIR') or os.path.join(os.path.expanduser('~'), '.claude')
-STATE_DIR = os.environ.get('CLAUDE_STATUSLINE_STATE_DIR') or os.path.join(CLAUDE_DIR, 'statusline-windows')
+# Cache files live in %LOCALAPPDATA% (the Windows place for caches), not in ~/.claude: many people keep
+# ~/.claude in git, and machine-local caches must never end up in commits.
+DEFAULT_STATE_DIR = (os.path.join(os.environ['LOCALAPPDATA'], 'claude-code-statusline-windows')
+                     if IS_WIN and os.environ.get('LOCALAPPDATA')
+                     else os.path.join(CLAUDE_DIR, 'statusline-windows', 'state'))
+STATE_DIR = os.environ.get('CLAUDE_STATUSLINE_STATE_DIR') or DEFAULT_STATE_DIR
 QUOTA_CACHE = os.path.join(STATE_DIR, 'quota_cache.json')
 GIT_CACHE = os.path.join(STATE_DIR, 'git_cache.json')
 USAGE_CACHE = os.path.join(STATE_DIR, 'usage_cache.json')

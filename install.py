@@ -24,6 +24,10 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 CLAUDE_DIR = os.environ.get('CLAUDE_CONFIG_DIR') or os.path.join(os.path.expanduser('~'), '.claude')
 INSTALL_DIR = os.path.join(CLAUDE_DIR, 'statusline-windows')
+# Same default as statusline.py. Only this default folder is ever deleted on uninstall; a folder you
+# chose with CLAUDE_STATUSLINE_STATE_DIR is yours and is left alone.
+DEFAULT_STATE_DIR = (os.path.join(os.environ['LOCALAPPDATA'], 'claude-code-statusline-windows')
+                     if os.name == 'nt' and os.environ.get('LOCALAPPDATA') else None)
 TARGET = os.path.join(INSTALL_DIR, 'statusline.py')
 SETTINGS = os.path.join(CLAUDE_DIR, 'settings.json')
 PREVIOUS = os.path.join(INSTALL_DIR, 'previous_statusline.json')
@@ -214,6 +218,9 @@ def uninstall(dry):
               'then run --uninstall again to remove the files.')
         return
     shutil.rmtree(INSTALL_DIR, ignore_errors=True)
+    if DEFAULT_STATE_DIR and not os.environ.get('CLAUDE_STATUSLINE_STATE_DIR'):
+        shutil.rmtree(DEFAULT_STATE_DIR, ignore_errors=True)
+        print(f'Removed cache : {DEFAULT_STATE_DIR}')
     print('Uninstalled. Restart Claude Code.')
 
 

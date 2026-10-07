@@ -372,6 +372,35 @@ class Installer(unittest.TestCase):
         self.assertTrue(os.path.exists(os.path.join(self.cfg, 'statusline-windows', 'statusline.py')),
                         data['statusLine']['command'])
 
+    def test_cache_goes_to_localappdata_not_claude_dir(self):
+        lad = tempfile.mkdtemp(prefix='lad-', dir=TMP)
+        env = {'LOCALAPPDATA': lad, 'CLAUDE_CONFIG_DIR': self.cfg}
+        saved = os.environ.pop('CLAUDE_STATUSLINE_STATE_DIR')
+        try:
+            r = run_script(json.dumps({'rate_limits': {'five_hour': {'used_percentage': 5}}}).encode(), env)
+        finally:
+            os.environ['CLAUDE_STATUSLINE_STATE_DIR'] = saved
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertTrue(os.path.isfile(os.path.join(lad, 'claude-code-statusline-windows', 'quota_cache.json')))
+        self.assertEqual(os.listdir(self.cfg), [])        # nothing written inside the Claude config folder
+
+    def test_uninstall_removes_default_cache_but_not_a_chosen_one(self):
+        lad = tempfile.mkdtemp(prefix='lad-', dir=TMP)
+        cache = os.path.join(lad, 'claude-code-statusline-windows')
+        os.makedirs(cache)
+        mine = tempfile.mkdtemp(prefix='my-cache-', dir=TMP)
+        self.write(b'{}')
+        base = dict(os.environ, CLAUDE_CONFIG_DIR=self.cfg, LOCALAPPDATA=lad)
+        base.pop('CLAUDE_STATUSLINE_STATE_DIR', None)
+        subprocess.run([sys.executable, self.INSTALL], capture_output=True, env=base)
+        subprocess.run([sys.executable, self.INSTALL, '--uninstall'], capture_output=True,
+                       env=dict(base, CLAUDE_STATUSLINE_STATE_DIR=mine))
+        self.assertTrue(os.path.isdir(mine))               # a folder you chose is never deleted
+        self.assertTrue(os.path.isdir(cache))              # and the default is kept while you use a custom one
+        subprocess.run([sys.executable, self.INSTALL], capture_output=True, env=base)
+        subprocess.run([sys.executable, self.INSTALL, '--uninstall'], capture_output=True, env=base)
+        self.assertFalse(os.path.isdir(cache))
+
     def test_uninstall_restores_when_untouched(self):
         self.write(json.dumps({'statusLine': {'type': 'command', 'command': 'old'}}).encode())
         self.run_install()

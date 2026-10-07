@@ -9,5 +9,6 @@ First public release.
 - Model name follows `/model` even when the status-line input lags behind; names are derived from the model id, so new models need no update
 - Git branch read from `.git/HEAD`; dirty flag cached for 5 seconds; no git process at all on Google Drive / OneDrive folders
 - Cached limits are dropped when the account changes (plan + hashed account ID) or when the window has already reset
+- Cache files live in `%LOCALAPPDATA%`, never inside `~/.claude` (which many people keep in git)
 - Optional burn rate (tokens/min via ccusage) and optional cost display
 - `install.py` with backup, `--dry-run` and `--uninstall`; unit + end-to-end tests; mock scenarios and SVG previews

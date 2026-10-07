@@ -136,7 +136,7 @@ python install.py
 python install.py --uninstall
 ```
 
-移除時會還原你原本的 `statusLine` 設定（原本沒有就刪掉這個鍵），並刪除 `statusline-windows` 資料夾。如果你安裝之後把 `statusLine` 的指令換成別的，移除時會保留你改的設定，不會蓋回去；只是多加了 `refreshInterval` 之類的欄位，仍會照常還原。若你的設定還在執行本工具資料夾裡的腳本，資料夾會保留下來，避免留下指向不存在檔案的設定。
+移除時會還原你原本的 `statusLine` 設定（原本沒有就刪掉這個鍵），並刪除 `statusline-windows` 資料夾與預設的快取資料夾（你用 `CLAUDE_STATUSLINE_STATE_DIR` 自己指定的資料夾不會被刪）。如果你安裝之後把 `statusLine` 的指令換成別的，移除時會保留你改的設定，不會蓋回去；只是多加了 `refreshInterval` 之類的欄位，仍會照常還原。若你的設定還在執行本工具資料夾裡的腳本，資料夾會保留下來，避免留下指向不存在檔案的設定。
 
 想請 AI 程式助理代為安裝的話，請它照 [INSTALL_FOR_AI.md](INSTALL_FOR_AI.md) 的步驟做。
 
@@ -181,7 +181,7 @@ setx CLAUDE_STATUSLINE_BURN_RATE 1
 | `CLAUDE_STATUSLINE_SHOW_COST` | 關 | 設為 `1` 顯示本 session 估算花費 |
 | `CLAUDE_STATUSLINE_NO_GIT` | （空） | 不啟動 git 的路徑前綴，多個用分號 `;` 分隔，例如 `D:\Shared;E:\Sync`。以完整資料夾比對（`C:\Work` 不會比對到 `C:\Workspace`），這些路徑下只顯示分支名稱 |
 | `CLAUDE_STATUSLINE_GIT_IN_CLOUD` | 關 | 設為 `1` 關閉 Google Drive／OneDrive 的自動偵測，在雲端磁碟上也照常執行 git。`CLAUDE_STATUSLINE_NO_GIT` 列出的路徑仍然不會啟動 git |
-| `CLAUDE_STATUSLINE_STATE_DIR` | `%USERPROFILE%\.claude\statusline-windows` | 快取檔（額度、git 狀態、burn rate）存放的資料夾 |
+| `CLAUDE_STATUSLINE_STATE_DIR` | `%LOCALAPPDATA%\claude-code-statusline-windows` | 快取檔（額度、git 狀態、burn rate）存放的資料夾。刻意不放在 `.claude` 底下：很多人會用 git 管理 `.claude`，本機快取不該跟著被提交 |
 
 開關類的變數接受 `1`、`true`、`yes`、`on`；要關閉就設成 `0`。
 

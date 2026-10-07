@@ -136,7 +136,7 @@ To uninstall:
 python install.py --uninstall
 ```
 
-Uninstalling restores your previous `statusLine` value (or removes the key if you had none) and deletes the `statusline-windows` folder. If you replaced the `statusLine` command with something else after installing, uninstall leaves your setting alone instead of overwriting it; extra keys such as `refreshInterval` do not count as a change. If your setting still runs a script inside the tool's folder, the folder is kept so you are not left with a setting that points to a missing file.
+Uninstalling restores your previous `statusLine` value (or removes the key if you had none) and deletes the `statusline-windows` folder and the default cache folder (a folder you chose with `CLAUDE_STATUSLINE_STATE_DIR` is never deleted). If you replaced the `statusLine` command with something else after installing, uninstall leaves your setting alone instead of overwriting it; extra keys such as `refreshInterval` do not count as a change. If your setting still runs a script inside the tool's folder, the folder is kept so you are not left with a setting that points to a missing file.
 
 If you'd like an AI coding assistant to install it for you, point it to [INSTALL_FOR_AI.md](INSTALL_FOR_AI.md).
 
@@ -181,7 +181,7 @@ setx CLAUDE_STATUSLINE_BURN_RATE 1
 | `CLAUDE_STATUSLINE_SHOW_COST` | off | Set to `1` to show the estimated session cost |
 | `CLAUDE_STATUSLINE_NO_GIT` | (empty) | Path prefixes where git is never started, separated by semicolons `;`, e.g. `D:\Shared;E:\Sync`. Matched by whole folder (`C:\Work` does not match `C:\Workspace`). Only the branch name is shown under these paths |
 | `CLAUDE_STATUSLINE_GIT_IN_CLOUD` | off | Set to `1` to turn off the automatic Google Drive / OneDrive detection and run git on cloud drives too. Paths listed in `CLAUDE_STATUSLINE_NO_GIT` still never start git |
-| `CLAUDE_STATUSLINE_STATE_DIR` | `%USERPROFILE%\.claude\statusline-windows` | Folder for the cache files (limits, git status, burn rate) |
+| `CLAUDE_STATUSLINE_STATE_DIR` | `%LOCALAPPDATA%\claude-code-statusline-windows` | Folder for the cache files (limits, git status, burn rate). Deliberately outside `.claude`: many people keep `.claude` in git, and machine-local caches should never end up in commits |
 
 On/off variables accept `1`, `true`, `yes`, or `on`; set one to `0` to turn it off.
 
